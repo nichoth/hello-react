@@ -1,6 +1,9 @@
+var React = require('react');
 import ReactDOM from 'react-dom';
-import { html } from 'htm/react';
+// import { html } from 'htm/react';
 
-var el = html`<a href="/">Hello!</a>`
+var el = <div>
+    <a href="/">hello</a>
+</div>
 
-ReactDOM.render(el, document.body);
+ReactDOM.render(el, document.getElementById('content'));
