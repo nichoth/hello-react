@@ -7,8 +7,7 @@ var Bus = require('@nichoth/events')
 var namespace = require('@nichoth/events/namespace')
 
 var evs = namespace({
-    inc: ['one'],
-    minus: ['one']
+    count: ['inc', 'dec']
 })
 
 var bus = Bus({ memo: true })
@@ -17,11 +16,11 @@ var state = struct({
     count: observ(0)
 })
 
-bus.on(evs.inc.one, () => {
+bus.on(evs.count.inc, () => {
     state.count.set(state.count() + 1)
 })
 
-bus.on(evs.minus.one, () => {
+bus.on(evs.count.dec, () => {
     state.count.set(state.count() - 1)
 })
 
@@ -42,8 +41,8 @@ function Counter (props) {
     return html`<div className="counter">
         ${props.count}
         <div className="controls">
-            <button onClick=${emit(evs.inc.one)}>plus</button>
-            <button onClick=${emit(evs.minus.one)}>minus</button>
+            <button onClick=${emit(evs.count.inc)}>plus</button>
+            <button onClick=${emit(evs.count.dec)}>minus</button>
         </div>
     </div>`
 }
