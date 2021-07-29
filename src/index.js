@@ -11,9 +11,7 @@ var evs = namespace({
     minus: ['one']
 })
 
-var bus = Bus({
-    memo: true
-})
+var bus = Bus({ memo: true })
 
 var state = struct({
     count: observ(0)
@@ -27,7 +25,7 @@ bus.on(evs.minus.one, () => {
     state.count.set(state.count() - 1)
 })
 
-function App (props) {
+function App () {
     var [_state, setState] = useState(state());
     state(function onChange (newState) {
         setState(newState)

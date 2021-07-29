@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "start": "npm run copy && npm run build-sass && npm run build && concurrently --kill-others \"npm run serve\" \"npm run watch-sass\"",
+    "start": "npm run build && concurrently --kill-others \"npm run serve\" \"npm run watch-sass\"",
     "serve": "budo src/index.js:bundle.js --dir=public/ --live --pushstate --open -- -t babelify -p esmify -p common-shakeify -dv",
-    "build": "npm run build-js && npm run build-sass",
+    "build": "npm run copy && npm run build-js && npm run build-sass",
     "build-sass": "sass src/style/main.scss public/style.css",
     "build-js": "browserify -p esmify -p common-shakeify -t babelify -t unassertify -t uglifyify --debug src/index.js > public/bundle.js",
     "watch-sass": "sass --watch src/style/main.scss public/style.css",
