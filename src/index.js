@@ -48,3 +48,4 @@ function Counter (props) {
 }
 
 ReactDOM.render(html`<${App} />`, document.getElementById('content'));
+
